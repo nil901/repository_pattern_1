@@ -1,16 +1,21 @@
+using DTOModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Repo.Service1;
+using repository.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Repo.Service1.IUserService;
 
 namespace repository_pattern_1
 {
@@ -28,9 +33,14 @@ namespace repository_pattern_1
         {
 
             services.AddControllers();
+
+            services.AddDbContext<DBContextt>(x => x.UseSqlServer(Configuration.GetConnectionString("con")));
+          
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();  
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "repository_pattern_1", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "repository_pattern_1", Version = "v1" });  
             });
         }
 

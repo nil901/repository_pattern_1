@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace DTOModel
 {
-    class UserUpdateDTO
+   public class UserUpdateDTO
     {
       public int UserId { get; set; }   
       public string UserName { get; set; }   
-     public string Address { get; set; } 
-       
+        public string City { get; set; }
+       public string Address { get; set; }
+        public int Accountnumber { get; set; }
+        public string AccountType { get; set; }
+        public int Amount { get; set; }
+
+
 
     }
 

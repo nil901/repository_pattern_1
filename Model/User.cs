@@ -13,15 +13,17 @@ namespace Model
         [Required]
         public string City { get; set; } 
         [Required]
-        public string Address { get; set; }  
+        public string Address { get; set; }   
+        [Required]
+        public int AccountNumber { get; set;}  
+        [Required]
+        public string AccountType { get; set; }  
+        [Required]
+        public int Amount { get; set; } 
 
 
 
-        [Display(Name = "Account_model")]
-         public virtual int AccountNo { get; set; }
-
-        [ForeignKey("AccountNo")]
-        public virtual Account Account { get; set; } 
+       
 
     }
 }
